@@ -166,14 +166,6 @@ proxy-groups:
 
 # [远程规则]
 rule-providers:
-  adrules-mihomo:
-    path: "./rule_provider/adrules-mihomo.mrs"
-    url: https://adrules.top/adrules-mihomo.mrs
-    type: http
-    behavior: domain
-    interval: 86400
-    format: mrs
-    
   Emby:
     path: "./rule_provider/Emby.yaml"
     url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
@@ -208,7 +200,6 @@ rule-providers:
 
 # [规则走向]
 rules:
-- RULE-SET, adrules-mihomo, REJECT
 - RULE-SET, Emby, Emby
 - RULE-SET, Netflix, Netflix
 - RULE-SET, Apple, DIRECT
