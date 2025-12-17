@@ -170,7 +170,7 @@ rule-providers:
     path: "./rule_provider/adrules-mihomo.mrs"
     url: https://adrules.top/adrules-mihomo.mrs
     type: http
-    behavior: classical
+    behavior: domain
     interval: 86400
     format: mrs
     
