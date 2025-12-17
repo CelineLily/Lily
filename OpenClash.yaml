@@ -168,7 +168,7 @@ proxy-groups:
 rule-providers:
   Emby:
     path: "./rule_provider/Emby.yaml"
-    url: https://raw.githubusercontent.com/ibetrulior-maker/Lily/refs/heads/main/Emby.yaml
+    url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
     type: http
     behavior: classical
     interval: 3600
