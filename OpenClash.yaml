@@ -166,6 +166,14 @@ proxy-groups:
 
 # [远程规则]
 rule-providers:
+  ChinaDownloadCDN:
+    path: "./rules/ChinaDownloadCDN.yaml"
+    url: https://kelee.one/Tool/Clash/Rule/ChinaDownloadCDN.yaml
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+  
   Emby:
     path: "./rule_provider/Emby.yaml"
     url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
@@ -198,11 +206,21 @@ rule-providers:
     interval: 3600
     format: yaml
 
+  ESET_China:
+    path: "./rules/ESET_China.yaml"
+    url: https://kelee.one/Tool/Clash/Rule/ESET_China.yaml
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+
 # [本地规则]
 rules:
+- RULE-SET, LAN, DIRECT
+- RULE-SET, ChinaDownloadCDN, DIRECT
 - RULE-SET, Emby, Emby
 - RULE-SET, Netflix, Netflix
 - RULE-SET, Apple, DIRECT
-- RULE-SET, LAN, DIRECT
+- RULE-SET, ESET_China, DIRECT
 - GEOIP, CN, DIRECT
 - MATCH, 全球手动选择
