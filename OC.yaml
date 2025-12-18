@@ -93,18 +93,19 @@ tun:
   stack: mixed
   device: utun
   dns-hijack:
-  - 127.0.0.1:53
-  endpoint-independent-nat: true
-  auto-route: false
-  auto-detect-interface: false
-  auto-redirect: false
-  strict-route: false
+    - any:53
+    - tcp://any:53
+  endpoint-independent-nat: false
+  auto-route: true
+  auto-detect-interface: true
+  auto-redirect: true
+  strict-route: true
 
 # [DNS设置]
 dns:
   enable: true
   cache-algorithm: arc
-  listen: 0.0.0.0:7874
+  listen: 0.0.0.0:1053
   ipv6: false
   respect-rules: true
   enhanced-mode: fake-ip
