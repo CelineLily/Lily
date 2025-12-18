@@ -83,6 +83,16 @@ sniffer:
   - Mijia Cloud
   - "+.push.apple.com"
 
+# [TUN设置]
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+  auto-route: true
+  auto-detect-interface: true
+
 # [DNS设置]
 dns:
   enable: true
