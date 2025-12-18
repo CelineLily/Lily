@@ -205,7 +205,7 @@ rule-providers:
     path: "./rule_provider/PlayStation.yaml"
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/PlayStation/PlayStation.yaml
     type: http
-    behavior: domain
+    behavior: classical
     interval: 86400
     format: yaml
 
