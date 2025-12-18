@@ -25,8 +25,10 @@ proxy-providers:
     path: "./proxy_provider/微斯人，吾谁与归"
 
 # [节点信息]
-proxies:
-  - {name: 直连, type: direct}
+proxies: 
+  - name: "直连"
+    type: direct
+    udp: true
 
 # [端口设置]
 port: 7890
@@ -36,7 +38,6 @@ mixed-port: 7893
 tproxy-port: 7895
 
 # [通用设置]
-udp: true
 mode: rule
 ipv6: false
 allow-lan: true
@@ -266,14 +267,15 @@ rule-providers:
 
 # [规则走向]
 rules:
-- RULE-SET,private_ip,直连,no-resolve
-- RULE-SET,private_domain,直连
-- RULE-SET,apple_domain,直连
-- RULE-SET,netflix_domain,Netflix
-- RULE-SET, Emby, Emby
-- RULE-SET,apple_ip,直连
-- RULE-SET,netflix_ip,Netflix
-- RULE-SET,geolocation-!cn,全球手动选择
-- RULE-SET,cn_domain,直连
-- RULE-SET,cn_ip,直连
-- MATCH,全球手动选择
+  - RULE-SET,private_ip,直连,no-resolve
+  - RULE-SET,private_domain,直连
+  - RULE-SET,apple_domain,直连
+  - RULE-SET,netflix_domain,Netflix
+  - RULE-SET, Emby, Emby
+  - RULE-SET,cn_domain,直连
+  - RULE-SET,geolocation-!cn,全球手动选择
+
+  - RULE-SET,apple_ip,直连
+  - RULE-SET,netflix_ip,Netflix
+  - RULE-SET,cn_ip,直连
+  - MATCH,全球手动选择
