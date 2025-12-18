@@ -127,16 +127,6 @@ proxy-groups:
   - 美国
   - 新加坡
 
-- name: PlayStation
-  type: select
-  icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
-  proxies:
-  - DIRECT
-  - 香港
-  - 日本
-  - 美国
-  - 新加坡
-
 - name: Emby
   type: select
   icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
@@ -201,14 +191,6 @@ rule-providers:
     interval: 86400
     format: mrs
 
-  PlayStation:
-    path: "./rule_provider/PlayStation.yaml"
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/PlayStation/PlayStation.yaml
-    type: http
-    behavior: classical
-    interval: 86400
-    format: yaml
-
   Emby:
     path: "./rule_provider/Emby.yaml"
     url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
@@ -243,7 +225,8 @@ rule-providers:
 
 # [规则走向]
 rules:
-- RULE-SET,PlayStation,PlayStation
+- RULE-SET,gst.prod.dl.playstation.net,DIRECT
+- RULE-SET,sgst.prod.dl.playstation.net,DIRECT
 - RULE-SET,Emby,Emby
 - RULE-SET,Netflix,Netflix
 - RULE-SET,Apple,DIRECT
