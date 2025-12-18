@@ -174,6 +174,7 @@ proxy-groups:
 # [远程规则]
 rule-providers:
   fakeipfilter_domain:
+    path: "./rule_provider/fakeipfilter_domain"
     url: https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs
     type: http
     behavior: domain
@@ -214,9 +215,9 @@ rule-providers:
 
 # [规则走向]
 rules:
-- RULE-SET, Emby, Emby
-- RULE-SET, Netflix, Netflix
-- RULE-SET, Apple, DIRECT
-- RULE-SET, LAN, DIRECT
-- GEOIP, CN, DIRECT
-- MATCH, 全球手动选择
+- RULE-SET,Emby,Emby
+- RULE-SET,Netflix,Netflix
+- RULE-SET,Apple,DIRECT
+- RULE-SET,LAN,DIRECT
+- GEOIP,CN,DIRECT
+- MATCH,全球手动选择
