@@ -205,7 +205,7 @@ rule-providers:
     interval: 86400
     format: mrs
 
-   cn_domain:
+  cn_domain:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs
     type: http
     behavior: domain
@@ -213,28 +213,28 @@ rule-providers:
     format: mrs
 
   
-   private_ip:
+  private_ip:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs
     type: http
     behavior: ipcidr
     interval: 86400
     format: mrs
 
-   cn_ip:
+  cn_ip:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs
     type: http
     behavior: ipcidr
     interval: 86400
     format: mrs
 
-   netflix_ip:
+  netflix_ip:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs
     type: http
     behavior: ipcidr
     interval: 86400
     format: mrs
 
-   apple_ip:
+  apple_ip:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo-lite/geoip/apple.mrs
     type: http
     behavior: ipcidr
