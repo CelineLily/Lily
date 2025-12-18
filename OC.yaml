@@ -1,4 +1,4 @@
----
+# [订阅节点]
 proxy-providers:
   Corn Group:
     url: https://www.corninhi.com/s/84tn4684vat2
@@ -11,6 +11,7 @@ proxy-providers:
     override:
       additional-prefix: "[Corn Group]"
     path: "./proxy_provider/Corn Group"
+  
   微斯人，吾谁与归:
     url: https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=ef8d92d1a6cbfeacec50ab80a85a7843
     type: http
@@ -22,15 +23,20 @@ proxy-providers:
     override:
       additional-prefix: "[微斯人，吾谁与归]"
     path: "./proxy_provider/微斯人，吾谁与归"
+
 proxies:
 - name: 直连
   type: direct
   udp: true
+
+# [端口设置]
 port: 7890
 socks-port: 7891
 redir-port: 7892
 mixed-port: 7893
 tproxy-port: 7895
+
+# [通用设置]
 mode: rule
 ipv6: false
 allow-lan: true
@@ -41,6 +47,8 @@ geodata-loader: standard
 find-process-mode: strict
 global-client-fingerprint: chrome
 external-controller: 0.0.0.0:9090
+
+# [GEO设置]
 geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
@@ -49,9 +57,13 @@ geox-url:
   geosite: https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
   mmdb: https://testingcf.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/lite/Country.mmdb
   asn: https://testingcf.jsdelivr.net/gh/xishang0128/geoip@release/GeoLite2-ASN.mmdb
+
+# [缓存设置]
 profile:
   store-selected: true
   store-fake-ip: true
+
+# [嗅探设置]
 sniffer:
   enable: true
   force-dns-mapping: true
@@ -74,9 +86,11 @@ sniffer:
   skip-domain:
   - Mijia Cloud
   - "+.push.apple.com"
+
+# [TUN设置]
 tun:
   enable: true
-  stack: system
+  stack: mixed
   device: utun
   dns-hijack:
   - 127.0.0.1:53
@@ -85,6 +99,8 @@ tun:
   auto-detect-interface: false
   auto-redirect: false
   strict-route: false
+
+# [DNS设置]
 dns:
   enable: true
   cache-algorithm: arc
@@ -106,6 +122,8 @@ dns:
   - https://8.8.8.8/dns-query#RULES&ecs=223.5.5.0/24
   fake-ip-filter:
   - rule-set:fakeipfilter_domain
+
+# [策略组]
 proxy-groups:
 - name: 全球手动选择
   type: select
@@ -115,6 +133,7 @@ proxy-groups:
   - 日本
   - 美国
   - 新加坡
+
 - name: Emby
   type: select
   icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
@@ -123,6 +142,7 @@ proxy-groups:
   - 日本
   - 美国
   - 新加坡
+
 - name: Netflix
   type: select
   icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
@@ -131,6 +151,7 @@ proxy-groups:
   - 香港
   - 日本
   - 美国
+
 - name: 香港
   type: url-test
   include-all: true
@@ -139,6 +160,7 @@ proxy-groups:
   filter: "(?i)港|hk|hong kong"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+
 - name: 日本
   type: url-test
   include-all: true
@@ -147,6 +169,7 @@ proxy-groups:
   filter: "(?i)日|jp|japan"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+
 - name: 美国
   type: url-test
   include-all: true
@@ -155,6 +178,7 @@ proxy-groups:
   filter: "(?i)美|us|united states"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+
 - name: 新加坡
   type: url-test
   include-all: true
@@ -163,6 +187,8 @@ proxy-groups:
   filter: "(?i)新|sg|singapore"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+
+# [远程规则]
 rule-providers:
   fakeipfilter_domain:
     url: https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs
@@ -171,6 +197,7 @@ rule-providers:
     interval: 86400
     format: mrs
     path: "./rule_provider/fakeipfilter_domain"
+  
   private_domain:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
     type: http
@@ -178,6 +205,7 @@ rule-providers:
     interval: 86400
     format: mrs
     path: "./rule_provider/private_domain"
+  
   apple_domain:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs
     type: http
@@ -185,6 +213,7 @@ rule-providers:
     interval: 86400
     format: mrs
     path: "./rule_provider/apple_domain"
+  
   Emby:
     url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
     type: http
@@ -192,6 +221,7 @@ rule-providers:
     interval: 86400
     format: yaml
     path: "./rule_provider/Emby"
+  
   netflix_domain:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs
     type: http
@@ -199,6 +229,7 @@ rule-providers:
     interval: 86400
     format: mrs
     path: "./rule_provider/netflix_domain"
+  
   private_ip:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs
     type: http
@@ -206,6 +237,7 @@ rule-providers:
     interval: 86400
     format: mrs
     path: "./rule_provider/private_ip"
+  
   cn_domain:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs
     type: http
@@ -213,6 +245,7 @@ rule-providers:
     interval: 86400
     format: mrs
     path: "./rule_provider/cn_domain"
+  
   geolocation-!cn:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs
     type: http
@@ -220,6 +253,7 @@ rule-providers:
     interval: 86400
     format: mrs
     path: "./rule_provider/geolocation-!cn"
+  
   apple_ip:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo-lite/geoip/apple.mrs
     type: http
@@ -227,6 +261,7 @@ rule-providers:
     interval: 86400
     format: mrs
     path: "./rule_provider/apple_ip"
+  
   netflix_ip:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs
     type: http
@@ -234,6 +269,7 @@ rule-providers:
     interval: 86400
     format: mrs
     path: "./rule_provider/netflix_ip"
+  
   cn_ip:
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs
     type: http
@@ -241,6 +277,8 @@ rule-providers:
     interval: 86400
     format: mrs
     path: "./rule_provider/cn_ip"
+
+# [规则走向]
 rules:
 - RULE-SET,private_ip,直连,no-resolve
 - RULE-SET,private_domain,直连
@@ -253,11 +291,3 @@ rules:
 - RULE-SET,netflix_ip,Netflix
 - RULE-SET,cn_ip,直连
 - MATCH,全球手动选择
-secret: euP0Praj
-bind-address: "*"
-external-ui: "/usr/share/openclash/ui"
-external-ui-name: metacubexd
-keep-alive-interval: 15
-keep-alive-idle: 600
-authentication:
-- Clash:pdfEFeBz
