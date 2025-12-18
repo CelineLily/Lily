@@ -114,7 +114,7 @@ dns:
   nameserver:
   - https://8.8.8.8/dns-query#RULES&ecs=223.5.5.0/24
   fake-ip-filter:
-  - "rule-set:fakeipfilter_domain"
+  - rule-set:fakeipfilter_domain
 
 # [策略组]
 proxy-groups:
