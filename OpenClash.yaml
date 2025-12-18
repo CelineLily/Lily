@@ -225,8 +225,8 @@ rule-providers:
 
 # [规则走向]
 rules:
-- RULE-SET,gst.prod.dl.playstation.net,DIRECT
-- RULE-SET,sgst.prod.dl.playstation.net,DIRECT
+- DOMAIN,gst.prod.dl.playstation.net,DIRECT
+- DOMAIN,sgst.prod.dl.playstation.net,DIRECT
 - RULE-SET,Emby,Emby
 - RULE-SET,Netflix,Netflix
 - RULE-SET,Apple,DIRECT
