@@ -279,10 +279,10 @@ rule-providers:
 
 # [规则走向]
 rules:
-- RULE-SET,private_ip,DIRECT,no-resolve
-- RULE-SET,private_domain,DIRECT
 - DOMAIN,miwifi.com,全球手动选择
 - DOMAIN,gst.prod.dl.playstation.net,DIRECT
+- RULE-SET,private_ip,DIRECT,no-resolve
+- RULE-SET,private_domain,DIRECT
 - RULE-SET,Emby,Emby
 - RULE-SET,apple_domain,DIRECT
 - RULE-SET,netflix_domain,Netflix
