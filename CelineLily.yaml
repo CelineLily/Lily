@@ -197,6 +197,13 @@ rule-providers:
     interval: 86400
     format: mrs
 
+  private_domain:
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
+    type: http
+    behavior: domain
+    interval: 86400
+    format: mrs
+
   Emby:
     path: "./rule_provider/Emby.yaml"
     url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
@@ -205,37 +212,74 @@ rule-providers:
     interval: 86400
     format: yaml
 
-  Netflix:
-    path: "./rule_provider/Netflix.yaml"
-    url: https://rule.kelee.one/Clash/Netflix.yaml
+  apple_domain:
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs
     type: http
-    behavior: classical
+    behavior: domain
     interval: 86400
-    format: yaml
+    format: mrs
 
-  Apple:
-    path: "./rule_provider/Apple.yaml"
-    url: https://rule.kelee.one/Clash/Apple.yaml
+  netflix_domain:
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs
     type: http
-    behavior: classical
+    behavior: domain
     interval: 86400
-    format: yaml
+    format: mrs
 
-  LAN:
-    path: "./rule_provider/Lan.yaml"
-    url: https://kelee.one/Tool/Clash/Rule/LAN_SPLITTER.yaml
+  geolocation-!cn:
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs
     type: http
-    behavior: classical
+    behavior: domain
     interval: 86400
-    format: yaml
+    format: mrs
+
+  cn_domain:
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs
+    type: http
+    behavior: domain
+    interval: 86400
+    format: mrs
+
+  private_ip:
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs
+    type: http
+    behavior: ipcidr
+    interval: 86400
+    format: mrs
+
+  cn_ip:
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs
+    type: http
+    behavior: ipcidr
+    interval: 86400
+    format: mrs
+
+  netflix_ip:
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs
+    type: http
+    behavior: ipcidr
+    interval: 86400
+    format: mrs
+
+  apple_ip:
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo-lite/geoip/apple.mrs
+    type: http
+    behavior: ipcidr
+    interval: 86400
+    format: mrs
 
 # [规则走向]
 rules:
 - DOMAIN,miwifi.com,全球手动选择
 - DOMAIN,gst.prod.dl.playstation.net,DIRECT
 - RULE-SET,Emby,Emby
-- RULE-SET,Apple,DIRECT
-- RULE-SET,Netflix,Netflix
-- RULE-SET,LAN,DIRECT
-- GEOIP,CN,DIRECT
+- RULE-SET,private_ip,DIRECT,no-resolve
+- RULE-SET,private_domain,DIRECT
+- RULE-SET,apple_domain,DIRECT
+- RULE-SET,netflix_domain,Netflix
+- RULE-SET,apple_ip,DIRECT
+- RULE-SET,netflix_ip,Netflix
+- RULE-SET,geolocation-!cn,全球手动选择
+- RULE-SET,cn_domain,DIRECT
+- RULE-SET,cn_ip,DIRECT
 - MATCH,全球手动选择
