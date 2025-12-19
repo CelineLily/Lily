@@ -254,6 +254,7 @@ rule-providers:
 # [规则走向]
 rules:
 - DOMAIN,gst.prod.dl.playstation.net,DIRECT
+- DOMAIN,miwifi.com,全球手动选择
 - RULE-SET,Emby,Emby
 - RULE-SET,Netflix,Netflix
 - RULE-SET,Apple,DIRECT
