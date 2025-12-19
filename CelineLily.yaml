@@ -154,8 +154,8 @@ proxy-groups:
 - name: 香港
   type: url-test
   include-all: true
-  interval: 1800
-  tolerance: 50
+  interval: 300
+  tolerance: 20
   filter: "(?i)港|hk|hong kong"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
@@ -163,8 +163,8 @@ proxy-groups:
 - name: 日本
   type: url-test
   include-all: true
-  interval: 1800
-  tolerance: 50
+  interval: 300
+  tolerance: 20
   filter: "(?i)日|jp|japan"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
@@ -172,8 +172,8 @@ proxy-groups:
 - name: 美国
   type: url-test
   include-all: true
-  interval: 1800
-  tolerance: 50
+  interval: 300
+  tolerance: 20
   filter: "(?i)美|us|united states"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
@@ -181,8 +181,8 @@ proxy-groups:
 - name: 新加坡
   type: url-test
   include-all: true
-  interval: 1800
-  tolerance: 50
+  interval: 300
+  tolerance: 20
   filter: "(?i)新|sg|singapore"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
