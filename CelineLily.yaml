@@ -207,7 +207,7 @@ rule-providers:
 
   Netflix:
     path: "./rule_provider/Netflix.yaml"
-    url: https://rule.kelee.one/Clash/Netflix.yaml
+    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Netflix.yaml
     type: http
     behavior: classical
     interval: 86400
@@ -215,7 +215,7 @@ rule-providers:
 
   Apple:
     path: "./rule_provider/Apple.yaml"
-    url: https://rule.kelee.one/Clash/Apple.yaml
+    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Apple.yaml
     type: http
     behavior: classical
     interval: 86400
@@ -223,7 +223,7 @@ rule-providers:
 
   LAN:
     path: "./rule_provider/Lan.yaml"
-    url: https://kelee.one/Tool/Clash/Rule/LAN_SPLITTER.yaml
+    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Clash/Ruleset/LAN.yaml
     type: http
     behavior: classical
     interval: 86400
