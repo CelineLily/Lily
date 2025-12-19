@@ -190,7 +190,7 @@ rule-providers:
     path: "./rule_provider/Emby.yaml"
     url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
     type: http
-    behavior: domain
+    behavior: classical
     interval: 86400
     format: yaml
 
