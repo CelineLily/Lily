@@ -33,18 +33,18 @@ tproxy-port: 7895
 
 # [通用设置]
 mode: rule
-log-level: info
-unified-delay: true
-geodata-loader: standard
+bind-address: "*"
 ipv6: false
 allow-lan: true
-bind-address: "*"
+udp: true
 tcp-concurrent: true
 keep-alive-interval: 15
 keep-alive-idle: 600
-udp: true
+geodata-loader: standard
 find-process-mode: strict
+unified-delay: true
 global-client-fingerprint: chrome
+log-level: info
 external-controller: 0.0.0.0:9090
 
 # [GEO设置]
