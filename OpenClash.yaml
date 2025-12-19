@@ -284,9 +284,7 @@ rules:
 - RULE-SET,private_ip,DIRECT,no-resolve
 - RULE-SET,private_domain,DIRECT
 - RULE-SET,Emby,Emby
-- RULE-SET,apple_domain,DIRECT
 - RULE-SET,netflix_domain,Netflix
-- RULE-SET,apple_ip,DIRECT
 - RULE-SET,netflix_ip,Netflix
 - RULE-SET,geolocation-!cn,全球手动选择
 - RULE-SET,cn_domain,DIRECT
