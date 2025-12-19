@@ -205,6 +205,14 @@ rule-providers:
     interval: 86400
     format: yaml
 
+  Apple:
+    path: "./rule_provider/Apple.yaml"
+    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Apple.yaml
+    type: http
+    behavior: classical
+    interval: 86400
+    format: yaml
+
   Netflix:
     path: "./rule_provider/Netflix.yaml"
     url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Netflix.yaml
@@ -226,6 +234,7 @@ rules:
 - DOMAIN,miwifi.com,全球手动选择
 - DOMAIN,gst.prod.dl.playstation.net,DIRECT
 - RULE-SET,Emby,Emby
+- RULE-SET,Apple,DIRECT
 - RULE-SET,Netflix,Netflix
 - RULE-SET,LAN,DIRECT
 - GEOIP,CN,DIRECT
