@@ -231,11 +231,11 @@ rule-providers:
 
 # [规则走向]
 rules:
+- DOMAIN,miwifi.com,全球手动选择
 - DOMAIN,gst.prod.dl.playstation.net,DIRECT
-- DOMAIN,miwifi.com,香港
 - RULE-SET,Emby,Emby
-- RULE-SET,Netflix,Netflix
 - RULE-SET,Apple,DIRECT
+- RULE-SET,Netflix,Netflix
 - RULE-SET,LAN,DIRECT
 - GEOIP,CN,DIRECT
 - MATCH,全球手动选择
