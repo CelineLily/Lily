@@ -129,25 +129,31 @@ proxy-groups:
   icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
   proxies:
   - 香港
+  - 香港Fallback
   - 日本
   - 美国
   - 新加坡
+  - 新加坡Fallback
 
 - name: Emby
   type: select
   icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
   proxies:
   - 香港
+  - 香港Fallback
   - 日本
   - 美国
   - 新加坡
+  - 新加坡Fallback
 
 - name: Netflix
   type: select
   icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
   proxies:
   - 新加坡
+  - 新加坡Fallback
   - 香港
+  - 香港Fallback
   - 日本
   - 美国
 
@@ -156,6 +162,14 @@ proxy-groups:
   include-all: true
   interval: 300
   tolerance: 20
+  filter: "(?i)港|hk|hong kong"
+  url: https://cp.cloudflare.com/generate_204
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+
+- name: 香港Fallback
+  type: fallback
+  include-all: true
+  interval: 300
   filter: "(?i)港|hk|hong kong"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
@@ -183,6 +197,14 @@ proxy-groups:
   include-all: true
   interval: 300
   tolerance: 20
+  filter: "(?i)新|sg|singapore"
+  url: https://cp.cloudflare.com/generate_204
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+
+- name: 新加坡Fallback
+  type: fallback
+  include-all: true
+  interval: 300
   filter: "(?i)新|sg|singapore"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
