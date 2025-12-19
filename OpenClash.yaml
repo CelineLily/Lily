@@ -11,7 +11,7 @@ proxy-providers:
     override:
       additional-prefix: "[Corn Group]"
     path: "./proxy_provider/Corn Group"
-
+  
   微斯人，吾谁与归:
     url: https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=0c9252e949403ff1b3beb95ed7f1ec20
     type: http
@@ -102,25 +102,20 @@ tun:
 # [DNS设置]
 dns:
   enable: true
-  cache-algorithm: arc
-  listen: 0.0.0.0:7874
   ipv6: false
-  respect-rules: true
+  prefer-h3: false
+  listen: 0.0.0.0:1053
   enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter-mode: blacklist
   default-nameserver:
-  - https://223.5.5.5/dns-query
-  proxy-server-nameserver:
-  - https://dns.alidns.com/dns-query
-  - https://doh.pub/dns-query
-  direct-nameserver:
-  - https://dns.alidns.com/dns-query
-  - https://doh.pub/dns-query
+    - 223.5.5.5
+    - 119.29.29.29
   nameserver:
-  - https://8.8.8.8/dns-query#RULES&ecs=223.5.5.0/24
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
   fake-ip-filter:
-  - rule-set:fakeipfilter_domain
+    - '*.lan'
+    - '+.local'
+  fake-ip-range: 198.18.0.1/16
 
 # [策略组]
 proxy-groups:
@@ -189,22 +184,6 @@ proxy-groups:
 
 # [远程规则]
 rule-providers:
-  fakeipfilter_domain:
-    path: "./rule_provider/fakeipfilter_domain"
-    url: https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs
-    type: http
-    behavior: domain
-    interval: 86400
-    format: mrs
-
-  private_domain:
-    path: "./rule_provider/private_domain"
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
-    type: http
-    behavior: domain
-    interval: 86400
-    format: mrs
-
   Emby:
     path: "./rule_provider/Emby.yaml"
     url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
@@ -213,82 +192,36 @@ rule-providers:
     interval: 86400
     format: yaml
 
-  apple_domain:
-    path: "./rule_provider/apple_domain"
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs
+  Apple:
+    path: "./rule_provider/Apple.yaml"
+    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Apple.yaml
     type: http
-    behavior: domain
+    behavior: classical
     interval: 86400
-    format: mrs
-    
-  netflix_domain:
-    path: "./rule_provider/netflix_domain"
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs
-    type: http
-    behavior: domain
-    interval: 86400
-    format: mrs
+    format: yaml
 
-  geolocation-!cn:
-    path: "./rule_provider/geolocation-!cn"
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs
+  Netflix:
+    path: "./rule_provider/Netflix.yaml"
+    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Netflix.yaml
     type: http
-    behavior: domain
+    behavior: classical
     interval: 86400
-    format: mrs
+    format: yaml
 
-  cn_domain:
-    path: "./rule_provider/cn_domain"
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs
+  LAN:
+    path: "./rule_provider/Lan.yaml"
+    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Clash/Ruleset/LAN.yaml
     type: http
-    behavior: domain
+    behavior: classical
     interval: 86400
-    format: mrs
-
-  private_ip:
-    path: "./rule_provider/private_ip"
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs
-    type: http
-    behavior: ipcidr
-    interval: 86400
-    format: mrs
-
-  cn_ip:
-    path: "./rule_provider/cn_ip"
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs
-    type: http
-    behavior: ipcidr
-    interval: 86400
-    format: mrs
-
-  netflix_ip:
-    path: "./rule_provider/netflix_ip"
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs
-    type: http
-    behavior: ipcidr
-    interval: 86400
-    format: mrs
-
-  apple_ip:
-    path: "./rule_provider/apple_ip"
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo-lite/geoip/apple.mrs
-    type: http
-    behavior: ipcidr
-    interval: 86400
-    format: mrs
+    format: yaml
 
 # [规则走向]
 rules:
-- DOMAIN,miwifi.com,全球手动选择
 - DOMAIN,gst.prod.dl.playstation.net,DIRECT
-- RULE-SET,private_ip,DIRECT,no-resolve
-- RULE-SET,private_domain,DIRECT
 - RULE-SET,Emby,Emby
-- RULE-SET,apple_domain,DIRECT
-- RULE-SET,netflix_domain,Netflix
-- RULE-SET,apple_ip,DIRECT
-- RULE-SET,netflix_ip,Netflix
-- RULE-SET,geolocation-!cn,全球手动选择
-- RULE-SET,cn_domain,DIRECT
-- RULE-SET,cn_ip,DIRECT
+- RULE-SET,Apple,DIRECT
+- RULE-SET,Netflix,Netflix
+- RULE-SET,LAN,DIRECT
+- GEOIP,CN,DIRECT
 - MATCH,全球手动选择
