@@ -220,7 +220,6 @@ rule-providers:
 
 # [规则走向]
 rules:
-- DOMAIN,miwifi.com,全球手动选择
 - DOMAIN,gst.prod.dl.playstation.net,DIRECT
 - RULE-SET,Emby,Emby
 - RULE-SET,Apple,DIRECT
