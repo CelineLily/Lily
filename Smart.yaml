@@ -1,4 +1,4 @@
----
+# [订阅节点]
 proxy-providers:
   Corn Group:
     url: https://www.corninhi.com/s/nc25dd4u88tk
@@ -11,11 +11,15 @@ proxy-providers:
     override:
       additional-prefix: "[Corn Group]"
     path: "./proxy_provider/Corn Group"
+
+# [端口设置]
 port: 7890
 socks-port: 7891
 redir-port: 7892
 mixed-port: 7893
 tproxy-port: 7895
+
+# [通用设置]
 mode: rule
 bind-address: "*"
 ipv6: false
@@ -30,6 +34,11 @@ unified-delay: true
 global-client-fingerprint: chrome
 log-level: info
 external-controller: 0.0.0.0:9090
+lgbm-auto-update: true
+lgbm-url: https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin
+lgbm-update-interval: 24
+
+# [GEO设置]
 geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
@@ -38,10 +47,14 @@ geox-url:
   geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat
   mmdb: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/country.mmdb
   asn: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/GeoLite2-ASN.mmdb
+
+# [缓存设置]
 profile:
   store-selected: true
   store-fake-ip: true
   smart-collector-size: 100.0
+
+# [嗅探设置]
 sniffer:
   enable: true
   override-destination: true
@@ -71,6 +84,8 @@ sniffer:
   - "+.sunlogin.net"
   - "+.push.apple.com"
   parse-pure-ip: true
+
+# [TUN设置]
 tun:
   enable: true
   stack: mixed
@@ -82,6 +97,8 @@ tun:
   auto-detect-interface: false
   auto-redirect: false
   strict-route: false
+
+# [DNS设置]
 dns:
   enable: true
   cache-algorithm: arc
@@ -104,6 +121,8 @@ dns:
   fake-ip-filter:
   - rule-set:fakeipfilter_domain
   - geosite:cn
+
+# [策略组]
 proxy-groups:
 - name: 全球手动选择
   type: select
@@ -113,6 +132,7 @@ proxy-groups:
   - 日本
   - 美国
   - 新加坡
+
 - name: Emby
   type: select
   icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
@@ -122,6 +142,7 @@ proxy-groups:
   - 日本
   - 美国
   - 新加坡
+
 - name: Netflix
   type: select
   icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
@@ -130,6 +151,7 @@ proxy-groups:
   - 香港
   - 日本
   - 美国
+
 - name: 香港
   type: smart
   include-all: true
@@ -142,6 +164,7 @@ proxy-groups:
   strategy: round-robin
   collectdata: true
   sample-rate: 1.0
+
 - name: 日本
   type: smart
   include-all: true
@@ -154,6 +177,7 @@ proxy-groups:
   strategy: round-robin
   collectdata: true
   sample-rate: 1.0
+
 - name: 美国
   type: smart
   include-all: true
@@ -166,6 +190,7 @@ proxy-groups:
   strategy: round-robin
   collectdata: true
   sample-rate: 1.0
+
 - name: 新加坡
   type: smart
   include-all: true
@@ -178,6 +203,8 @@ proxy-groups:
   strategy: round-robin
   collectdata: true
   sample-rate: 1.0
+
+# [远程规则]
 rule-providers:
   fakeipfilter_domain:
     path: "./rule_provider/fakeipfilter_domain"
@@ -186,6 +213,7 @@ rule-providers:
     behavior: domain
     interval: 86400
     format: mrs
+
   Emby:
     path: "./rule_provider/Emby.yaml"
     url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
@@ -193,6 +221,7 @@ rule-providers:
     behavior: classical
     interval: 86400
     format: yaml
+
   Apple:
     path: "./rule_provider/Apple.yaml"
     url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Apple.yaml
@@ -200,6 +229,7 @@ rule-providers:
     behavior: classical
     interval: 86400
     format: yaml
+
   Netflix:
     path: "./rule_provider/Netflix.yaml"
     url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Netflix.yaml
@@ -207,6 +237,7 @@ rule-providers:
     behavior: classical
     interval: 86400
     format: yaml
+
   LAN:
     path: "./rule_provider/Lan.yaml"
     url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Clash/Ruleset/LAN.yaml
@@ -214,6 +245,8 @@ rule-providers:
     behavior: classical
     interval: 86400
     format: yaml
+
+# [规则走向]
 rules:
 - DOMAIN,gst.prod.dl.playstation.net,DIRECT
 - RULE-SET,Emby,Emby
@@ -222,11 +255,10 @@ rules:
 - RULE-SET,LAN,DIRECT
 - GEOIP,CN,DIRECT
 - MATCH,全球手动选择
+
+
 secret: HKY78MW4
 external-ui: "/usr/share/openclash/ui"
 external-ui-name: metacubexd
-lgbm-auto-update: true
-lgbm-url: https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin
-lgbm-update-interval: 24
 authentication:
 - Clash:d7wNRUwy
