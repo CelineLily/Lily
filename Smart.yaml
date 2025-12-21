@@ -179,10 +179,9 @@ proxy-groups:
   filter: "(?i)港|hk|hong kong"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
-  uselightgbm: true
-  collectdata: true
+  uselightgbm: false
+  collectdata: false
   strategy: sticky-sessions
-  sample-rate: 1.0
 
 - name: 日本
   type: smart
@@ -192,10 +191,9 @@ proxy-groups:
   filter: "(?i)日|jp|japan"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
-  uselightgbm: true
-  collectdata: true
+  uselightgbm: false
+  collectdata: false
   strategy: sticky-sessions
-  sample-rate: 1.0
 
 - name: 美国
   type: smart
@@ -205,10 +203,9 @@ proxy-groups:
   filter: "(?i)美|us|united states"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
-  uselightgbm: true
-  collectdata: true
+  uselightgbm: false
+  collectdata: false
   strategy: sticky-sessions
-  sample-rate: 1.0
 
 - name: 新加坡
   type: smart
@@ -218,10 +215,9 @@ proxy-groups:
   filter: "(?i)新|sg|singapore"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
-  uselightgbm: true
-  collectdata: true
+  uselightgbm: false
+  collectdata: false
   strategy: sticky-sessions
-  sample-rate: 1.0
 
 # [远程规则]
 rule-providers:
