@@ -37,14 +37,14 @@ mode: rule
 bind-address: "*"
 ipv6: false
 allow-lan: true
-udp: true
 tcp-concurrent: true
 keep-alive-interval: 15
-keep-alive-idle: 600
+keep-alive-idle: 15
 geodata-loader: standard
 find-process-mode: strict
 unified-delay: true
 global-client-fingerprint: chrome
+authentication:
 
 # [缓存设置]
 profile:
@@ -52,7 +52,7 @@ profile:
   store-fake-ip: true
   smart-collector-size: 100.0
 
-# [面板设置]
+# [外部控制]
 external-controller: 0.0.0.0:9090
 secret: 
 external-ui: "/usr/share/openclash/ui"
