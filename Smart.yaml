@@ -35,8 +35,8 @@ global-client-fingerprint: chrome
 log-level: info
 external-controller: 0.0.0.0:9090
 lgbm-auto-update: true
-lgbm-url: https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin
 lgbm-update-interval: 24
+lgbm-url: https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin
 
 # [GEO设置]
 geodata-mode: false
@@ -137,8 +137,8 @@ proxy-groups:
   type: select
   icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
   proxies:
-  - 香港
   - DIRECT
+  - 香港
   - 日本
   - 美国
   - 新加坡
@@ -161,8 +161,8 @@ proxy-groups:
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
   uselightgbm: true
-  strategy: round-robin
   collectdata: true
+  strategy: sticky-sessions
   sample-rate: 1.0
 
 - name: 日本
@@ -174,8 +174,8 @@ proxy-groups:
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
   uselightgbm: true
-  strategy: round-robin
   collectdata: true
+  strategy: sticky-sessions
   sample-rate: 1.0
 
 - name: 美国
@@ -187,8 +187,8 @@ proxy-groups:
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
   uselightgbm: true
-  strategy: round-robin
   collectdata: true
+  strategy: sticky-sessions
   sample-rate: 1.0
 
 - name: 新加坡
@@ -200,8 +200,8 @@ proxy-groups:
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
   uselightgbm: true
-  strategy: round-robin
   collectdata: true
+  strategy: sticky-sessions
   sample-rate: 1.0
 
 # [远程规则]
