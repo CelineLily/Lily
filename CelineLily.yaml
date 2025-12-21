@@ -32,6 +32,7 @@ mixed-port: 7893
 tproxy-port: 7895
 
 # [通用设置]
+log-level: info
 mode: rule
 bind-address: "*"
 ipv6: false
@@ -43,7 +44,7 @@ geodata-loader: standard
 find-process-mode: strict
 unified-delay: true
 global-client-fingerprint: chrome
-log-level: info
+authentication:
 
 # [外部控制]
 external-controller: 0.0.0.0:9090
