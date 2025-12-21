@@ -34,6 +34,8 @@ unified-delay: true
 global-client-fingerprint: chrome
 log-level: info
 external-controller: 0.0.0.0:9090
+external-ui: "/usr/share/openclash/ui"
+external-ui-name: metacubexd
 lgbm-auto-update: true
 lgbm-update-interval: 24
 lgbm-url: https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin
@@ -255,10 +257,3 @@ rules:
 - RULE-SET,LAN,DIRECT
 - GEOIP,CN,DIRECT
 - MATCH,全球手动选择
-
-
-secret: HKY78MW4
-external-ui: "/usr/share/openclash/ui"
-external-ui-name: metacubexd
-authentication:
-- Clash:d7wNRUwy
