@@ -33,9 +33,20 @@ find-process-mode: strict
 unified-delay: true
 global-client-fingerprint: chrome
 log-level: info
+
+# [缓存设置]
+profile:
+  store-selected: true
+  store-fake-ip: true
+  smart-collector-size: 100.0
+
+# [面板设置]
 external-controller: 0.0.0.0:9090
+secret: 
 external-ui: "/usr/share/openclash/ui"
 external-ui-name: metacubexd
+
+# [LightGBM模型]
 lgbm-auto-update: true
 lgbm-update-interval: 24
 lgbm-url: https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin
@@ -49,12 +60,6 @@ geox-url:
   geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat
   mmdb: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/country.mmdb
   asn: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/GeoLite2-ASN.mmdb
-
-# [缓存设置]
-profile:
-  store-selected: true
-  store-fake-ip: true
-  smart-collector-size: 100.0
 
 # [嗅探设置]
 sniffer:
