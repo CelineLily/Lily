@@ -44,7 +44,12 @@ find-process-mode: strict
 unified-delay: true
 global-client-fingerprint: chrome
 log-level: info
+
+# [外部控制]
 external-controller: 0.0.0.0:9090
+secret: 
+external-ui: "/usr/share/openclash/ui"
+external-ui-name: metacubexd
 
 # [GEO设置]
 geodata-mode: false
