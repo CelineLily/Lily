@@ -179,7 +179,7 @@ proxy-groups:
   filter: "(?i)港|hk|hong kong"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
-  uselightgbm: false
+  uselightgbm: true
   collectdata: false
   strategy: sticky-sessions
 
@@ -191,7 +191,7 @@ proxy-groups:
   filter: "(?i)日|jp|japan"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
-  uselightgbm: false
+  uselightgbm: true
   collectdata: false
   strategy: sticky-sessions
 
@@ -203,7 +203,7 @@ proxy-groups:
   filter: "(?i)美|us|united states"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
-  uselightgbm: false
+  uselightgbm: true
   collectdata: false
   strategy: sticky-sessions
 
@@ -215,7 +215,7 @@ proxy-groups:
   filter: "(?i)新|sg|singapore"
   url: https://cp.cloudflare.com/generate_204
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
-  uselightgbm: false
+  uselightgbm: true
   collectdata: false
   strategy: sticky-sessions
 
