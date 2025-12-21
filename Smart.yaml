@@ -12,7 +12,6 @@ proxy-providers:
       additional-prefix: "[Corn Group]"
     path: "./proxy_provider/Corn Group"
 
-proxy-providers:
   Ash:
     url: https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=0c9252e949403ff1b3beb95ed7f1ec20
     type: http
