@@ -47,11 +47,11 @@ authentication:
   - nikki:997129
 
 # [外部控制]
-external-controller: 0.0.0.0:9090
-secret: "091279"
-external-ui: ui
-external-ui-name: zashboard
-external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
+# external-controller: 0.0.0.0:9090
+# secret: "091279"
+# external-ui: ui
+# external-ui-name: zashboard
+# external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
 
 # [缓存设置]
 profile:
