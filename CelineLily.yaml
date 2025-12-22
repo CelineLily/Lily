@@ -237,10 +237,10 @@ rule-providers:
 
 # [规则走向]
 rules:
+- RULE-SET,LAN,DIRECT
 - DOMAIN,gst.prod.dl.playstation.net,DIRECT
 - RULE-SET,Emby,Emby
 - RULE-SET,Apple,DIRECT
 - RULE-SET,Netflix,Netflix
-- RULE-SET,LAN,DIRECT
 - GEOIP,CN,DIRECT
 - MATCH,全球手动选择
