@@ -16,21 +16,23 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
 
-socks-port: 1080
-redir-port: 7891
-tproxy-port: 7892
-mixed-port: 7890
+# [端口设置]
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7894
 
-
+# [通用设置]
 mode: rule
-find-process-mode: off
-allow-lan: true
-bind-address: "*"
-ipv6: false
-unified-delay: true
-tcp-concurrent: true
 log-level: info
+bind-address: "*"
+allow-lan: true
+ipv6: false
+find-process-mode: off
+tcp-concurrent: true
 global-client-fingerprint: chrome
+unified-delay: true
 keep-alive-idle: 600
 keep-alive-interval: 15
 authentication:
@@ -39,14 +41,20 @@ external-ui: ui
 external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip
 external-controller: '[::]:9090'
 secret:
-port: 8080
 
-proxies: null
 
 profile:
   store-selected: true
   store-fake-ip: true
 
+geodata-mode: false
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geoip: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geoip.dat"
+  geosite: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat"
+  mmdb: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/country.mmdb"
+  asn: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/GeoLite2-ASN.mmdb"
 
 sniffer:
   enable: true
@@ -164,7 +172,6 @@ proxy-groups:
 
 rule-providers:
   fakeipfilter_domain:
-    path: "./rule_provider/fakeipfilter_domain"
     url: https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs
     type: http
     behavior: domain
@@ -172,7 +179,6 @@ rule-providers:
     format: mrs
 
   Emby:
-    path: "./rule_provider/Emby.yaml"
     url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
     type: http
     behavior: classical
@@ -180,7 +186,6 @@ rule-providers:
     format: yaml
 
   Apple:
-    path: "./rule_provider/Apple.yaml"
     url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Apple.yaml
     type: http
     behavior: classical
@@ -188,7 +193,6 @@ rule-providers:
     format: yaml
 
   Netflix:
-    path: "./rule_provider/Netflix.yaml"
     url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Netflix.yaml
     type: http
     behavior: classical
@@ -196,7 +200,6 @@ rule-providers:
     format: yaml
 
   LAN:
-    path: "./rule_provider/Lan.yaml"
     url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Clash/Ruleset/LAN.yaml
     type: http
     behavior: classical
@@ -212,9 +215,3 @@ rules:
   - RULE-SET,Netflix,Netflix
   - GEOIP,CN,DIRECT
   - MATCH,全球手动选择
-
-
-
-
-
-
