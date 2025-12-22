@@ -50,7 +50,6 @@ authentication:
 profile:
   store-selected: true
   store-fake-ip: true
-  smart-collector-size: 100.0
 
 # [外部控制]
 external-controller: 0.0.0.0:9090
