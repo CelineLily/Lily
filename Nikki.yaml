@@ -33,7 +33,7 @@ tproxy-port: 7894
 
 # [通用设置]
 mode: rule
-log-level: info
+log-level: warning
 bind-address: "*"
 allow-lan: true
 ipv6: false
