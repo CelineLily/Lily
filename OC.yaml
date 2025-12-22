@@ -24,14 +24,7 @@ proxy-providers:
       additional-prefix: "[Ash]"
     path: "./proxy_provider/Ash"
 
-# [端口设置]
-port: 7890
-socks-port: 7891
-redir-port: 7892
-mixed-port: 7893
-tproxy-port: 7895
-
-# 全局配置
+mixed-port: 7890
 allow-lan: true
 bind-address: "*"
 ipv6: false
@@ -46,11 +39,11 @@ profile:
   store-fake-ip: true
 
 # 为防止使用插件朋友遇到面板问题，我注释掉了此模块。
-external-controller: 0.0.0.0:9090
-secret: ""
-external-ui: ui
-external-ui-name: zashboard
-external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
+#external-controller: 0.0.0.0:9090
+#secret: ""
+#external-ui: ui
+#external-ui-name: zashboard
+#external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
 
 # 嗅探（fakeip下其实可以不用嗅探）
 sniffer:
@@ -102,7 +95,6 @@ dns:
     - https://8.8.8.8/dns-query#RULES&ecs=223.5.5.0/24
   fake-ip-filter:
     - "rule-set:fakeipfilter_domain"
- 
 # [策略组]
 proxy-groups:
 - name: 全球手动选择
