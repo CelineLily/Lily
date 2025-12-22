@@ -1,3 +1,4 @@
+# [订阅节点]
 proxy-providers:
   Corn Group:
     url: https://www.corninhi.com/s/nc25dd4u88tk
@@ -17,18 +18,20 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
 
-proxies: 
+# [节点信息]
+proxies:
   - name: "直连"
     type: direct
     udp: true
 
+# [端口设置]
 port: 8080
 socks-port: 1080
 redir-port: 7891
 mixed-port: 7890
 tproxy-port: 7892
 
-
+# [通用设置]
 mode: rule
 log-level: info
 bind-address: "*"
@@ -40,21 +43,19 @@ global-client-fingerprint: chrome
 unified-delay: true
 keep-alive-idle: 600
 keep-alive-interval: 15
-authentication:
-  - nikki:195350
 
-
+# [外部控制]
 external-ui: ui
 external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip
 external-controller: '[::]:9090'
 secret: "195350"
 
-
+# [缓存设置]
 profile:
   store-selected: true
   store-fake-ip: true
 
-
+# [GEO设置]
 geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
@@ -64,7 +65,7 @@ geox-url:
   mmdb: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/country.mmdb"
   asn: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/GeoLite2-ASN.mmdb"
 
-
+# [嗅探设置]
 sniffer:
   enable: true
   sniff:
@@ -79,7 +80,7 @@ sniffer:
     - "Mijia Cloud"
     - "+.push.apple.com"
 
-
+# [TUN设置]
 tun:
   enable: true
   stack: mixed
@@ -89,7 +90,7 @@ tun:
   auto-detect-interface: false
   device: nikki
 
-
+# [DNS设置]
 dns:
   enable: true
   cache-algorithm: arc
@@ -112,7 +113,7 @@ dns:
   fake-ip-filter:
     - "rule-set:fakeipfilter_domain"
 
-
+# [策略组]
 proxy-groups:
   - name: 全球手动选择
     type: select
@@ -178,7 +179,7 @@ proxy-groups:
     url: https://cp.cloudflare.com/generate_204
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
 
-
+# [远程规则]
 rule-providers:
   fakeipfilter_domain:
     url: https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs
@@ -215,7 +216,7 @@ rule-providers:
     interval: 86400
     format: yaml
 
-
+# [规则走向]
 rules:
   - RULE-SET,LAN,直连
   - DOMAIN,gst.prod.dl.playstation.net,直连
