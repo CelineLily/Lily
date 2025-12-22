@@ -17,6 +17,10 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
 
+proxies: 
+  - name: "直连"
+    type: direct
+    udp: true
 
 port: 8080
 socks-port: 1080
@@ -36,6 +40,10 @@ global-client-fingerprint: chrome
 unified-delay: true
 keep-alive-idle: 600
 keep-alive-interval: 15
+authentication:
+  - nikki:195350
+
+
 external-ui: ui
 external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip
 external-controller: '[::]:9090'
@@ -209,13 +217,10 @@ rule-providers:
 
 
 rules:
-  - RULE-SET,LAN,DIRECT
-  - DOMAIN,gst.prod.dl.playstation.net,DIRECT
+  - RULE-SET,LAN,直连
+  - DOMAIN,gst.prod.dl.playstation.net,直连
   - RULE-SET,Emby,Emby
-  - RULE-SET,Apple,DIRECT
+  - RULE-SET,Apple,直连
   - RULE-SET,Netflix,Netflix
-  - GEOIP,CN,DIRECT
+  - GEOIP,CN,直连
   - MATCH,全球手动选择
-authentication:
-  - nikki:195350
-proxies: nul
