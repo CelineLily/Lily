@@ -22,7 +22,6 @@ proxy-providers:
 proxies:
   - name: "直连"
     type: direct
-    udp: true
 
 # [端口设置]
 port: 8080
@@ -45,7 +44,10 @@ keep-alive-idle: 600
 keep-alive-interval: 15
 
 # [外部控制]
-
+external-ui: ui
+external-ui-url: https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
+external-controller: '[::]:9090'
+secret: "100000"
 
 # [缓存设置]
 profile:
@@ -91,7 +93,7 @@ tun:
 dns:
   enable: true
   cache-algorithm: arc
-  listen: 0.0.0.0:1053
+  listen: '[::]:1053'
   ipv6: false
   respect-rules: true
   enhanced-mode: fake-ip
