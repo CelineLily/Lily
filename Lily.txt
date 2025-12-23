@@ -1,1 +1,0 @@
-luci-i18n-argon-config-zh-cn luci-app-openclash
