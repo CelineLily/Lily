@@ -45,7 +45,7 @@ keep-alive-interval: 15
 
 
 external-controller: '[::]:9090'
-secret: "100000"
+secret: ""
 external-ui: ui
 external-ui-name: zashboard
 external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip"
