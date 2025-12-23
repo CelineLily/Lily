@@ -189,15 +189,22 @@ rule-providers:
     interval: 86400
     format: mrs
 
+  proxylite:
+    url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/proxy.list"
+    type: http
+    behavior: classical
+    interval: 86400
+    format: text
+
+  Emby:
+    url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
+    type: http
+    behavior: classical
+    interval: 86400
+    format: yaml
+
   private_domain:
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
-    type: http
-    behavior: domain
-    interval: 86400
-    format: mrs
-
-  ai:
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs"
     type: http
     behavior: domain
     interval: 86400
@@ -230,13 +237,6 @@ rule-providers:
     behavior: domain
     interval: 86400
     format: mrs
-
-  Emby:
-    url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
-    type: http
-    behavior: classical
-    interval: 86400
-    format: yaml
 
   private_ip:
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"
@@ -271,7 +271,7 @@ rules:
   - DOMAIN,gst.prod.dl.playstation.net,直连
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,private_domain,直连
-  - RULE-SET,ai,美国
+  - RULE-SET,proxylite,全球手动选择
   - RULE-SET,Emby,Emby
   - RULE-SET,apple_domain,直连
   - RULE-SET,netflix_domain,Netflix
