@@ -24,10 +24,18 @@ proxies:
     type: direct
     udp: true
 
-# [通用设置]
+# [端口设置]
+port: 8080
+socks-port: 1080
 mixed-port: 7890
+redir-port: 7891
+tproxy-port: 7892
+
+# [通用设置]
+mode: rule
 allow-lan: true
 bind-address: "*"
+find-process-mode: off
 ipv6: false
 unified-delay: true
 tcp-concurrent: true
@@ -38,10 +46,10 @@ keep-alive-interval: 15
 
 # [外部控制]
 external-controller: 0.0.0.0:9090
-secret: "091279"
+secret: ""
 external-ui: ui
 external-ui-name: zashboard
-external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
+external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip"
 
 # [缓存设置]
 profile:
@@ -79,9 +87,9 @@ tun:
   stack: mixed
   dns-hijack: ["any:53", "tcp://any:53"]
   device: nikki
-  auto-route: true
-  auto-redirect: true
-  auto-detect-interface: true
+  auto-route: false
+  auto-redirect: false
+  auto-detect-interface: false
 
 # [DNS设置]
 dns:
@@ -91,7 +99,7 @@ dns:
   ipv6: false
   respect-rules: true
   enhanced-mode: fake-ip
-  fake-ip-range: 28.0.0.1/8
+  fake-ip-range: 198.18.0.1/16
   fake-ip-filter-mode: blacklist
   default-nameserver:
     - https://223.5.5.5/dns-query
@@ -175,11 +183,18 @@ proxy-groups:
 # [远程规则]
 rule-providers:
   fakeipfilter_domain:
-    url: https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs
+    url: "https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs"
     type: http
     behavior: domain
     interval: 86400
     format: mrs
+
+  proxylite:
+    url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/proxy.list"
+    type: http
+    behavior: classical
+    interval: 86400
+    format: text
 
   Emby:
     url: https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml
@@ -188,33 +203,81 @@ rule-providers:
     interval: 86400
     format: yaml
 
-  Apple:
-    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Apple.yaml
+  private_domain:
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
     type: http
-    behavior: classical
+    behavior: domain
     interval: 86400
-    format: yaml
+    format: mrs
 
-  Netflix:
-    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Netflix.yaml
+  netflix_domain:
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"
     type: http
-    behavior: classical
+    behavior: domain
     interval: 86400
-    format: yaml
+    format: mrs
 
-  LAN:
-    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Clash/Ruleset/LAN.yaml
+  apple_domain:
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"
     type: http
-    behavior: classical
+    behavior: domain
     interval: 86400
-    format: yaml
+    format: mrs
+
+  geolocation-!cn:
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"
+    type: http
+    behavior: domain
+    interval: 86400
+    format: mrs
+
+  cn_domain:
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
+    type: http
+    behavior: domain
+    interval: 86400
+    format: mrs
+
+  private_ip:
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"
+    type: http
+    behavior: ipcidr
+    interval: 86400
+    format: mrs
+
+  cn_ip:
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"
+    type: http
+    behavior: ipcidr
+    interval: 86400
+    format: mrs
+
+  netflix_ip:
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"
+    type: http
+    behavior: ipcidr
+    interval: 86400
+    format: mrs
+
+  apple_ip:
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo-lite/geoip/apple.mrs"
+    type: http
+    behavior: ipcidr
+    interval: 86400
+    format: mrs
 
 # [规则走向]
 rules:
-  - RULE-SET,LAN,直连
   - DOMAIN,gst.prod.dl.playstation.net,直连
+  - RULE-SET,private_ip,直连,no-resolve
+  - RULE-SET,private_domain,直连
+  - RULE-SET,proxylite,全球手动选择
   - RULE-SET,Emby,Emby
-  - RULE-SET,Apple,直连
-  - RULE-SET,Netflix,Netflix
-  - GEOIP,CN,直连
+  - RULE-SET,apple_domain,直连
+  - RULE-SET,netflix_domain,Netflix
+  - RULE-SET,apple_ip,直连
+  - RULE-SET,netflix_ip,Netflix
+  - RULE-SET,geolocation-!cn,全球手动选择
+  - RULE-SET,cn_domain,直连
+  - RULE-SET,cn_ip,直连
   - MATCH,全球手动选择
