@@ -133,15 +133,6 @@ proxy-groups:
       - 美国
       - 新加坡
 
-  - name: Netflix
-    type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
-    proxies:
-      - 新加坡
-      - 香港
-      - 日本
-      - 美国
-
   - name: 香港
     type: url-test
     include-all: true
@@ -201,13 +192,6 @@ rule-providers:
     interval: 86400
     format: mrs
 
-  netflix_domain:
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"
-    type: http
-    behavior: domain
-    interval: 86400
-    format: mrs
-
   apple_domain:
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"
     type: http
@@ -243,13 +227,6 @@ rule-providers:
     interval: 86400
     format: mrs
 
-  netflix_ip:
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"
-    type: http
-    behavior: ipcidr
-    interval: 86400
-    format: mrs
-
   apple_ip:
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo-lite/geoip/apple.mrs"
     type: http
@@ -264,9 +241,7 @@ rules:
   - RULE-SET,private_domain,直连
   - RULE-SET,Emby,Emby
   - RULE-SET,apple_domain,直连
-  - RULE-SET,netflix_domain,Netflix
   - RULE-SET,apple_ip,直连
-  - RULE-SET,netflix_ip,Netflix
   - RULE-SET,geolocation-!cn,全球手动选择
   - RULE-SET,cn_domain,直连
   - RULE-SET,cn_ip,直连
