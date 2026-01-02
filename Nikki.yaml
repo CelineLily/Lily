@@ -10,7 +10,7 @@ proxy-providers:
       interval: 300
 
   Ash:
-    url: "https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=0c9252e949403ff1b3beb95ed7f1ec20"
+    url: "https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=MTQwNDA6ODMzMjY2ODYxMDE2OWIwZWUwNTFiNDA4OTgxYjI2YjI2NDAxODJiZA"
     type: http
     interval: 86400
     health-check:
