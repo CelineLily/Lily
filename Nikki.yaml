@@ -208,10 +208,10 @@ rule-providers:
 
 # [规则走向]
 rules:
-  - RULE-SET,LAN,直连
   - DOMAIN,gst.prod.dl.playstation.net,直连
   - RULE-SET,AdRules,REJECT
   - RULE-SET,Emby,Emby
   - RULE-SET,Apple,直连
+  - RULE-SET,LAN,直连
   - GEOIP,CN,直连
   - MATCH,全球手动选择
