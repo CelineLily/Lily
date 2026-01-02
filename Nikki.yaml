@@ -35,10 +35,10 @@ mode: rule
 allow-lan: true
 bind-address: "*"
 ipv6: false
-find-process-mode: strict
 unified-delay: true
 tcp-concurrent: true
 log-level: warning
+find-process-mode: strict
 global-client-fingerprint: chrome
 keep-alive-idle: 600
 keep-alive-interval: 15
@@ -193,14 +193,14 @@ rule-providers:
     format: mrs
 
   Apple:
-    url: "https://rule.kelee.one/Clash/Apple.yaml"
+    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Apple.yaml
     type: http
     behavior: classical
     interval: 86400
     format: yaml
 
   LAN:
-    url: "https://rule.kelee.one/Clash/Lan.yaml"
+    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Clash/Ruleset/LAN.yaml
     type: http
     behavior: classical
     interval: 86400
