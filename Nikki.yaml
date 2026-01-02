@@ -133,16 +133,6 @@ proxy-groups:
       - 美国
       - 新加坡
 
-  - name: Xbox
-    type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Xbox.png
-    proxies:
-      - DIRECT
-      - 香港
-      - 日本
-      - 美国
-      - 新加坡
-
   - name: 香港
     type: url-test
     include-all: true
@@ -190,13 +180,6 @@ rule-providers:
 
   Emby:
     url: "https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml"
-    type: http
-    behavior: classical
-    interval: 86400
-    format: yaml
-
-  Xbox:
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Xbox/Xbox.yaml"
     type: http
     behavior: classical
     interval: 86400
@@ -265,7 +248,6 @@ rules:
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,private_domain,直连
   - RULE-SET,Emby,Emby
-  - RULE-SET,Xbox,Xbox
   - RULE-SET,apple_domain,直连
   - RULE-SET,apple_ip,直连
   - RULE-SET,geolocation-!cn,全球手动选择
