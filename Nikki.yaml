@@ -188,6 +188,13 @@ rule-providers:
     interval: 86400
     format: mrs
 
+  AdRules:
+    url: "https://adrules.top/adrules-mihomo.mrs"
+    type: http
+    behavior: domain
+    interval: 86400
+    format: mrs
+
   Emby:
     url: "https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Emby.yaml"
     type: http
@@ -201,13 +208,6 @@ rule-providers:
     behavior: classical
     interval: 86400
     format: yaml
-
-  AdRules:
-    url: "https://adrules.top/adrules-mihomo.mrs"
-    type: http
-    behavior: domain
-    interval: 86400
-    format: mrs
 
   Apple:
     url: "https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Apple.yaml"
