@@ -192,65 +192,33 @@ rule-providers:
     interval: 86400
     format: mrs
 
-  private_domain:
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
+  Apple:
+    url: "https://rule.kelee.one/Clash/Apple.yaml"
     type: http
-    behavior: domain
+    behavior: classical
     interval: 86400
-    format: mrs
+    format: yaml
 
-  apple_domain:
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"
+  Netflix:
+    url: "https://rule.kelee.one/Clash/Netflix.yaml"
     type: http
-    behavior: domain
+    behavior: classical
     interval: 86400
-    format: mrs
+    format: yaml
 
-  geolocation-!cn:
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"
+  LAN:
+    url: "https://rule.kelee.one/Clash/Lan.yaml"
     type: http
-    behavior: domain
+    behavior: classical
     interval: 86400
-    format: mrs
-
-  cn_domain:
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
-    type: http
-    behavior: domain
-    interval: 86400
-    format: mrs
-
-  private_ip:
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"
-    type: http
-    behavior: ipcidr
-    interval: 86400
-    format: mrs
-
-  cn_ip:
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"
-    type: http
-    behavior: ipcidr
-    interval: 86400
-    format: mrs
-
-  apple_ip:
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo-lite/geoip/apple.mrs"
-    type: http
-    behavior: ipcidr
-    interval: 86400
-    format: mrs
+    format: yaml
 
 # [规则走向]
 rules:
+  - RULE-SET,LAN,直连
   - DOMAIN,gst.prod.dl.playstation.net,直连
-  - RULE-SET,AdRules,REJECT
-  - RULE-SET,private_ip,直连,no-resolve
-  - RULE-SET,private_domain,直连
   - RULE-SET,Emby,Emby
-  - RULE-SET,apple_domain,直连
-  - RULE-SET,apple_ip,直连
-  - RULE-SET,geolocation-!cn,全球手动选择
-  - RULE-SET,cn_domain,直连
-  - RULE-SET,cn_ip,直连
+  - RULE-SET,Apple,直连
+  - RULE-SET,Netflix,Netflix
+  - GEOIP,CN,直连
   - MATCH,全球手动选择
