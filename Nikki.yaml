@@ -210,14 +210,14 @@ rule-providers:
     format: mrs
 
   Apple:
-    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Apple.yaml
+    url: "https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/refs/heads/master/Clash/Ruleset/Apple.yaml"
     type: http
     behavior: classical
     interval: 86400
     format: yaml
 
   LAN:
-    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Clash/Ruleset/LAN.yaml
+    url: "https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Clash/Ruleset/LAN.yaml"
     type: http
     behavior: classical
     interval: 86400
