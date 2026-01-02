@@ -199,13 +199,6 @@ rule-providers:
     interval: 86400
     format: yaml
 
-  Netflix:
-    url: "https://rule.kelee.one/Clash/Netflix.yaml"
-    type: http
-    behavior: classical
-    interval: 86400
-    format: yaml
-
   LAN:
     url: "https://rule.kelee.one/Clash/Lan.yaml"
     type: http
@@ -220,6 +213,5 @@ rules:
   - RULE-SET,AdRules,REJECT
   - RULE-SET,Emby,Emby
   - RULE-SET,Apple,直连
-  - RULE-SET,Netflix,Netflix
   - GEOIP,CN,直连
   - MATCH,全球手动选择
