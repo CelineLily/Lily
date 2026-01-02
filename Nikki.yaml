@@ -35,6 +35,7 @@ mode: rule
 allow-lan: true
 bind-address: "*"
 ipv6: false
+find-process-mode: strict
 unified-delay: true
 tcp-concurrent: true
 log-level: warning
