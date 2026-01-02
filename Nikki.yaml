@@ -217,6 +217,7 @@ rule-providers:
 rules:
   - RULE-SET,LAN,直连
   - DOMAIN,gst.prod.dl.playstation.net,直连
+  - RULE-SET,AdRules,REJECT
   - RULE-SET,Emby,Emby
   - RULE-SET,Apple,直连
   - RULE-SET,Netflix,Netflix
