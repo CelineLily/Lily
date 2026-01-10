@@ -1,0 +1,10 @@
+payload:
+# PlayStation
+  - DOMAIN,gs2.ww.prod.dl.playstation.net
+  - DOMAIN,gst.prod.dl.playstation.net
+
+# Steam
+  - DOMAIN,steampipe.akamaized.net
+  - DOMAIN,steampipe-kr.akamaized.net
+  - DOMAIN,steampipe-partner.akamaized.net
+  - DOMAIN-SUFFIX,steamcontent.com
