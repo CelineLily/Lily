@@ -1,0 +1,8 @@
+payload:
+# HXD Emby
+  - DOMAIN,hxd.as174.de
+  - DOMAIN,emby.as174.de
+  
+# ASH Emby
+  - DOMAIN,ask.ash.yt
+  - DOMAIN,tv.ash.yt
