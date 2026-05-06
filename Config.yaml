@@ -1,0 +1,166 @@
+# [订阅锚点]
+Anchor_PR: &Anchor_PR
+  type: http
+  interval: 86400
+  proxy: ♻️直连直通
+  health-check:
+    enable: true
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+# [远程订阅]
+proxy-providers:
+  机场名1:
+    <<: *Anchor_PR
+    url: "订阅链接"
+    override:
+      additional-prefix: "[机场名1] "
+  
+  机场名2:
+    <<: *Anchor_PR
+    url: "订阅链接"
+    override:
+      additional-prefix: "[机场名2] "
+
+# [节点信息]
+proxies:
+  - {name: ♻️直连直通, type: direct}
+  - {name: 🚫拒绝访问, type: reject}
+
+# [全局配置]
+mixed-port: 7893
+allow-lan: true
+bind-address: "*"
+mode: rule
+log-level: error
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+# [外部控制]
+external-controller: 0.0.0.0:9090
+secret: ""
+external-ui: ui
+external-ui-name: zashboard
+external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip"
+
+# [地理数据]
+geodata-mode: true
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geoip: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb"
+  asn: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb"
+
+# [域名嗅探]
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  skip-domain:
+    - "Mijia Cloud"
+    - "+.push.apple.com"
+
+# [透明代理]
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack: ["any:53", "tcp://any:53"]
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+
+# [DNS配置]
+dns:
+  enable: true
+  cache-algorithm: arc
+  listen: 0.0.0.0:1053
+  ipv6: false
+  respect-rules: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter-mode: blacklist
+  default-nameserver:
+    - https://223.5.5.5/dns-query
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  direct-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  nameserver:
+    - https://8.8.8.8/dns-query#RULES&ecs=223.5.5.0/24
+  fake-ip-filter:
+    - "rule-set:fakeipfilter_domain"
+
+# [出站锚点]
+Anchor_01: &Anchor_01 {type: select, proxies: [♻️直连直通, 🇭🇰香港节点, 🇸🇬狮城节点, 🇯🇵日本节点, 🇺🇸美国节点]}
+Anchor_02: &Anchor_02 {type: select, proxies: [🇭🇰香港节点, 🇸🇬狮城节点, 🇯🇵日本节点, 🇺🇸美国节点, ♻️直连直通]}
+
+# [地区锚点]
+Anchor_HK: &Anchor_HK "(?i)港|hk|hong kong"
+Anchor_JP: &Anchor_JP "(?i)日|jp|japan"
+Anchor_US: &Anchor_US "(?i)美|us|united states"
+Anchor_SG: &Anchor_SG "(?i)新|sg|singapore"
+
+# [策略锚点]
+Anchor_UT: &Anchor_UT
+  type: url-test
+  url: "http://www.gstatic.com/generate_204"
+  interval: 300
+  lazy: false
+  tolerance: 50
+  timeout: 2000
+  max-failed-times: 3
+  hidden: true
+  include-all: true
+
+# [策略分组]
+proxy-groups:
+  # [手动策略]
+  - {name: 🏳️‍🌈代理接入, <<: *Anchor_02}
+  - {name: 🍟影视媒体, <<: *Anchor_02}
+  - {name: 👾索尼主机, <<: *Anchor_01}
+  - {name: 🍎苹果服务, <<: *Anchor_01}
+  # [自动优选]
+  - {name: 🇭🇰香港节点, <<: *Anchor_UT, filter: *Anchor_HK}
+  - {name: 🇯🇵日本节点, <<: *Anchor_UT, filter: *Anchor_JP}
+  - {name: 🇺🇸美国节点, <<: *Anchor_UT, filter: *Anchor_US}
+  - {name: 🇸🇬狮城节点, <<: *Anchor_UT, filter: *Anchor_SG}
+
+# [规则锚点]
+Anchor_DN: &Anchor_DN {type: http, interval: 86400, behavior: domain, format: mrs}
+Anchor_IP: &Anchor_IP {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+Anchor_CL: &Anchor_CL {type: http, interval: 86400, behavior: classical, format: yaml}
+
+# [规则订阅]
+rule-providers:
+  fakeipfilter_domain:
+    <<: *Anchor_DN
+    url: "https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs"
+
+  Movie:
+    <<: *Anchor_CL
+    url: "https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Movie.yaml"
+
+# [匹配规则]
+rules:
+  - SRC-IP-CIDR,192.168.2.193/32,👾索尼主机
+  - GEOIP,lan,♻️直连直通,no-resolve
+  - RULE-SET,Movie,🍟影视媒体
+  - GEOSITE,apple,🍎苹果服务
+  - GEOSITE,geolocation-!cn,🏳️‍🌈代理接入
+  - GEOSITE,CN,♻️直连直通
+  - GEOIP,CN,♻️直连直通
+  - MATCH,🏳️‍🌈代理接入
