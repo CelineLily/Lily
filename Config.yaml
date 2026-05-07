@@ -22,12 +22,15 @@ proxy-providers:
     override:
       additional-prefix: "[机场名2] "
 
-# [节点信息]
+#-----------------------------------------------------------------------------------------------------
+# 节点信息
 proxies:
-  - {name: ♻️直连直通, type: direct}
-  - {name: 🚫拒绝访问, type: reject}
+  - name: ♻️直连直通
+    type: direct
+  - name: 🚫拒绝访问
+    type: reject
 
-# [全局配置]
+# 全局配置
 mixed-port: 7893
 allow-lan: true
 bind-address: "*"
@@ -40,14 +43,14 @@ profile:
   store-selected: true
   store-fake-ip: true
 
-# [外部控制]
+# 外部控制
 external-controller: 0.0.0.0:9090
 secret: ""
 external-ui: ui
 external-ui-name: zashboard
 external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip"
 
-# [地理数据]
+# 地理数据
 geodata-mode: true
 geo-auto-update: true
 geo-update-interval: 24
@@ -57,7 +60,7 @@ geox-url:
   mmdb: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb"
   asn: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb"
 
-# [域名嗅探]
+# 域名嗅探
 sniffer:
   enable: true
   sniff:
@@ -72,16 +75,18 @@ sniffer:
     - "Mijia Cloud"
     - "+.push.apple.com"
 
-# [透明代理]
+# 透明代理
 tun:
   enable: true
   stack: mixed
-  dns-hijack: ["any:53", "tcp://any:53"]
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
   auto-route: true
   auto-redirect: true
   auto-detect-interface: true
 
-# [DNS配置]
+# DNS 配置
 dns:
   enable: true
   cache-algorithm: arc
@@ -104,17 +109,33 @@ dns:
   fake-ip-filter:
     - "rule-set:fakeipfilter_domain"
 
-# [出站锚点]
-Anchor_01: &Anchor_01 {type: select, proxies: [♻️直连直通, 🇭🇰香港节点, 🇸🇬狮城节点, 🇯🇵日本节点, 🇺🇸美国节点]}
-Anchor_02: &Anchor_02 {type: select, proxies: [🇭🇰香港节点, 🇸🇬狮城节点, 🇯🇵日本节点, 🇺🇸美国节点, ♻️直连直通]}
+#-----------------------------------------------------------------------------------------------------
+# 出站锚点
+Anchor_01: &Anchor_01
+  type: select
+  proxies:
+    - ♻️直连直通
+    - 🇭🇰香港节点
+    - 🇸🇬狮城节点
+    - 🇯🇵日本节点
+    - 🇺🇸美国节点
 
-# [地区锚点]
+Anchor_02: &Anchor_02
+  type: select
+  proxies:
+    - 🇭🇰香港节点
+    - 🇸🇬狮城节点
+    - 🇯🇵日本节点
+    - 🇺🇸美国节点
+    - ♻️直连直通
+
+# 地区锚点
 Anchor_HK: &Anchor_HK "(?i)港|hk|hong kong"
 Anchor_JP: &Anchor_JP "(?i)日|jp|japan"
 Anchor_US: &Anchor_US "(?i)美|us|united states"
 Anchor_SG: &Anchor_SG "(?i)新|sg|singapore"
 
-# [策略锚点]
+# 策略锚点
 Anchor_UT: &Anchor_UT
   type: url-test
   url: "http://www.gstatic.com/generate_204"
@@ -126,38 +147,66 @@ Anchor_UT: &Anchor_UT
   hidden: true
   include-all: true
 
-# [策略分组]
+# 策略分组
 proxy-groups:
-  # [手动策略]
-  - {name: 🏳️‍🌈代理接入, <<: *Anchor_02}
-  - {name: 🍟影视媒体, <<: *Anchor_02}
-  - {name: 👾索尼主机, <<: *Anchor_01}
-  - {name: 🍎苹果服务, <<: *Anchor_01}
-  # [自动优选]
-  - {name: 🇭🇰香港节点, <<: *Anchor_UT, filter: *Anchor_HK}
-  - {name: 🇯🇵日本节点, <<: *Anchor_UT, filter: *Anchor_JP}
-  - {name: 🇺🇸美国节点, <<: *Anchor_UT, filter: *Anchor_US}
-  - {name: 🇸🇬狮城节点, <<: *Anchor_UT, filter: *Anchor_SG}
+  # 手动策略
+  - name: 🏳️‍🌈代理接入
+    <<: *Anchor_02
+  - name: 🍟影视媒体
+    <<: *Anchor_02
+  - name: 👾索尼主机
+    <<: *Anchor_01
+  - name: 🍎苹果服务
+    <<: *Anchor_01
 
-# [规则锚点]
-Anchor_DN: &Anchor_DN {type: http, interval: 86400, behavior: domain, format: mrs}
-Anchor_IP: &Anchor_IP {type: http, interval: 86400, behavior: ipcidr, format: mrs}
-Anchor_CL: &Anchor_CL {type: http, interval: 86400, behavior: classical, format: yaml}
+  # 自动优选
+  - name: 🇭🇰香港节点
+    <<: *Anchor_UT
+    filter: *Anchor_HK
+  - name: 🇯🇵日本节点
+    <<: *Anchor_UT
+    filter: *Anchor_JP
+  - name: 🇺🇸美国节点
+    <<: *Anchor_UT
+    filter: *Anchor_US
+  - name: 🇸🇬狮城节点
+    <<: *Anchor_UT
+    filter: *Anchor_SG
 
-# [规则订阅]
+#-----------------------------------------------------------------------------------------------------
+# 规则锚点
+Anchor_DN: &Anchor_DN
+  type: http
+  interval: 86400
+  behavior: domain
+  format: mrs
+
+Anchor_IP: &Anchor_IP
+  type: http
+  interval: 86400
+  behavior: ipcidr
+  format: mrs
+
+Anchor_CL: &Anchor_CL
+  type: http
+  interval: 86400
+  behavior: classical
+  format: yaml
+
+# 规则订阅
 rule-providers:
   fakeipfilter_domain:
     <<: *Anchor_DN
     url: "https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs"
-
   Movie:
     <<: *Anchor_CL
     url: "https://raw.githubusercontent.com/CelineLily/Lily/refs/heads/main/Movie.yaml"
 
-# [匹配规则]
+# 匹配规则
 rules:
   - SRC-IP-CIDR,192.168.2.193/32,👾索尼主机
-  - GEOIP,lan,♻️直连直通,no-resolve
+  - GEOSITE,private,♻️直连直通
+  - GEOIP,private,♻️直连直通,no-resolve
   - RULE-SET,Movie,🍟影视媒体
   - GEOSITE,apple,🍎苹果服务
   - GEOSITE,geolocation-!cn,🏳️‍🌈代理接入
