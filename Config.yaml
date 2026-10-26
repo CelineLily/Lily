@@ -1,13 +1,13 @@
 # [锚点区域]
 rule-anchor:
   # [订阅锚点]
-  Anchor_PR: &Anchor_PR {type: http, interval: 0, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, exclude-filter: "官网|剩余|流量|套餐|订阅|直连|到期时间|Expire Date|Traffic|ExpireDate", proxy: 直连}
+  Anchor_PR: &Anchor_PR {type: http, interval: 0, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, exclude-filter: "官网|剩余|流量|套餐|订阅|直连|到期时间|Expire Date|Traffic|ExpireDate", proxy: 🟢国内直连}
   
   # [策略锚点]
-  Anchor_PG: &Anchor_PG {type: select, proxies: [🏳️‍🌈代理接入, 🇭🇰香港故转, 🇸🇬狮城故转, 🇭🇰香港自动, 🇯🇵日本自动, 🇸🇬狮城自动, 🇺🇸美国自动, ♻️直连直通]}
-  Anchor_OP: &Anchor_OP {type: select, proxies: [🇭🇰香港故转, 🇸🇬狮城故转, 🇭🇰香港自动, 🇯🇵日本自动, 🇸🇬狮城自动, 🇺🇸美国自动, ♻️直连直通]}
-  Anchor_LD: &Anchor_LD {type: select, proxies: [🇭🇰香港故转, 🇸🇬狮城故转, 🇭🇰香港自动, 🇯🇵日本自动, 🇸🇬狮城自动, 🇺🇸美国自动, ♻️直连直通]}
-  Anchor_TS: &Anchor_TS {type: url-test, proxies: [♻️直连直通, DIRECT], interval: 3600, lazy: true, url: "http://connect.rom.miui.com/generate_204"}
+  Anchor_PG: &Anchor_PG {type: select, proxies: [🏳️‍🌈代理接入, 🇭🇰香港故转, 🇸🇬狮城故转, 🇭🇰香港自动, 🇯🇵日本自动, 🇸🇬狮城自动, 🇺🇸美国自动, 🟢国内直连]}
+  Anchor_OP: &Anchor_OP {type: select, proxies: [🇭🇰香港故转, 🇸🇬狮城故转, 🇭🇰香港自动, 🇯🇵日本自动, 🇸🇬狮城自动, 🇺🇸美国自动, 🟢国内直连]}
+  Anchor_LD: &Anchor_LD {type: select, proxies: [🇭🇰香港故转, 🇸🇬狮城故转, 🇭🇰香港自动, 🇯🇵日本自动, 🇸🇬狮城自动, 🇺🇸美国自动, 🟢国内直连]}
+  Anchor_TS: &Anchor_TS {type: url-test, proxies: [🟢国内直连, DIRECT], interval: 3600, lazy: true, url: "http://connect.rom.miui.com/generate_204"}
   Anchor_FB: &Anchor_FB {type: fallback, include-all: true, interval: 300, lazy: true, url: 'https://www.gstatic.com/generate_204'}
   Anchor_UT: &Anchor_UT {type: url-test, include-all: true, tolerance: 50, interval: 300, lazy: true, url: 'https://www.gstatic.com/generate_204'}
   
@@ -26,10 +26,11 @@ rule-anchor:
 proxy-providers:
   HH: {<<: *Anchor_PR, url: "订阅URL"}
 
-# [核心配置]
 proxies:
-  - {name: ♻️直连直通, type: direct, udp: true}
+  - {name: 🟢国内直连, type: direct, udp: true}
+  - {name: 🔴拦截阻断, type: reject}
 
+# [全局配置]
 mixed-port: 7890
 authentication:
 - "user:passwd"
@@ -41,7 +42,7 @@ bind-address: "*"
 ipv6: false
 unified-delay: true
 tcp-concurrent: true
-log-level: info
+log-level: error
 keep-alive-idle: 600
 keep-alive-interval: 15
 profile:
@@ -61,7 +62,7 @@ ntp:
   enable: true
   write-to-system: true
 
-# [隧道配置]
+# [TUN配置]
 tun:
   enable: true
   stack: mixed
@@ -89,7 +90,7 @@ sniffer:
     - "Mijia Cloud"
     - "+.push.apple.com"
 
-# [域名解析]
+# [DNS配置]
 dns:
   enable: true
   cache-algorithm: arc
@@ -111,11 +112,11 @@ dns:
     - https://dns.alidns.com/dns-query#disable-qtype-65=true
     - https://doh.pub/dns-query#disable-qtype-65=true
     "rule-set:fakeipfilter_!cn":
-    - https://8.8.8.8/dns-query#默认代理&disable-qtype-65=true
+    - https://8.8.8.8/dns-query#🏳️‍🌈代理接入&disable-qtype-65=true
   nameserver:
-    - https://8.8.8.8/dns-query#默认代理&ecs=223.5.5.0/24
+    - https://8.8.8.8/dns-query#🏳️‍🌈代理接入&ecs=223.5.5.0/24
   fallback:
-    - https://8.8.8.8/dns-query#默认代理
+    - https://8.8.8.8/dns-query#🏳️‍🌈代理接入
   fallback-filter:
     geoip: true
     geoip-code: CN
@@ -153,21 +154,21 @@ proxy-groups:
 
 # [规则匹配]
 rules:
-  - AND,((RULE-SET,cn!_domain),(DST-PORT,443),(NETWORK,UDP)),REJECT
-  - RULE-SET,private_ip,♻️直连直通,no-resolve
-  - RULE-SET,private_domain,♻️直连直通
+  - AND,((RULE-SET,cn!_domain),(DST-PORT,443),(NETWORK,UDP)),🔴拦截阻断
+  - RULE-SET,private_ip,🟢国内直连,no-resolve
+  - RULE-SET,private_domain,🟢国内直连
   - RULE-SET,ai_domain,🤖人工智能
   - RULE-SET,github_domain,📦代码仓库
   - RULE-SET,onedrive_domain,☁️微软云盘
-  - RULE-SET,microsoftcn_domain,♻️直连直通
+  - RULE-SET,microsoftcn_domain,🟢国内直连
   - RULE-SET,microsoft_domain,🪟微软服务
-  - RULE-SET,applecn_domain,♻️直连直通
+  - RULE-SET,applecn_domain,🟢国内直连
   - RULE-SET,apple_domain,🍎苹果服务
-  - RULE-SET,steamcn_domain,♻️直连直通
+  - RULE-SET,steamcn_domain,🟢国内直连
   - RULE-SET,steam_domain,🎮游戏平台
   - RULE-SET,cn!_domain,🏳️‍🌈代理接入
   - RULE-SET,apple_ip,🍎苹果服务
-  - RULE-SET,cn_ip,♻️直连直通
+  - RULE-SET,cn_ip,🟢国内直连
   - MATCH,🐟漏网之鱼
 
 # [规则来源]
@@ -187,6 +188,6 @@ rule-providers:
   cn!_domain:        {<<: *Anchor_DN, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/geolocation-!cn.mrs"}
   cn_domain:         {<<: *Anchor_DN, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/cn.mrs"}
 
-  apple_ip:          {<<: *Anchor_IP, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo-lite/geoip/apple.mrs"}
+  apple_ip:          {<<: *Anchor_IP, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/apple.mrs"}
   cn_ip:             {<<: *Anchor_IP, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/cn.mrs"}
   private_ip:        {<<: *Anchor_IP, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/private.mrs"}
